@@ -1,0 +1,8 @@
+{{ define "list" }}
+{{ range .ntasks}}
+<a id="livetask" hx-get="/delete/{{.Id}}" hx-swap="innerHTML" hx-target="#List">{{.Title}}</a><br>
+{{ end }}
+{{ range .ftasks }}
+<a id="deadtask">{{.Title}}</a><br>
+{{end}}
+{{ end }}

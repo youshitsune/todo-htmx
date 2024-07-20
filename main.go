@@ -53,12 +53,12 @@ func main() {
 	})
 	e.POST("/add", func(c echo.Context) error {
 		title := c.FormValue("title")
-		ntasks = append([]Task{Task{strconv.Itoa(len(ntasks) + len(ftasks)), title}}, ntasks...)
+		ntasks = append([]Task{{strconv.Itoa(len(ntasks) + len(ftasks)), title}}, ntasks...)
 		res := map[string]interface{}{
 			"ntasks": ntasks,
 			"ftasks": ftasks,
 		}
-		return c.Render(http.StatusOK, "index", res)
+		return c.Render(http.StatusOK, "list", res)
 	})
 	e.GET("/delete/:id", func(c echo.Context) error {
 		id := c.Param("id")
@@ -72,7 +72,7 @@ func main() {
 			"ntasks": ntasks,
 			"ftasks": ftasks,
 		}
-		return c.Render(http.StatusOK, "index", res)
+		return c.Render(http.StatusOK, "list", res)
 	})
 	e.Logger.Fatal(e.Start(":3333"))
 }
