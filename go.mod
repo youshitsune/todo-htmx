@@ -2,7 +2,10 @@ module todo
 
 go 1.22.5
 
-require github.com/labstack/echo/v4 v4.12.0
+require (
+	github.com/labstack/echo/v4 v4.12.0
+	github.com/r3labs/sse/v2 v2.10.0
+)
 
 require (
 	github.com/labstack/gommon v0.4.2 // indirect
@@ -14,4 +17,5 @@ require (
 	golang.org/x/net v0.24.0 // indirect
 	golang.org/x/sys v0.21.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
+	gopkg.in/cenkalti/backoff.v1 v1.1.0 // indirect
 )

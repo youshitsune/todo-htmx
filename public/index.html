@@ -51,18 +51,12 @@
     <body id="hero">
         <div id="NewTask">
             <input type="text" name="title" id="title" />
-            <button id="addbtn" hx-post="/add" hx-include="#title" hx-swap="innerHTML" hx-target="#List">Add</button>
+            <button id="addbtn" hx-post="/add" hx-include="#title" hx-swap="none">Add</button>
         </div>
-        <div id="List">
-            {{ range .ntasks}}
-                <a id="livetask" hx-get="/delete/{{.Id}}" hx-swap="innerHTML" hx-target="#List">{{.Title}}</a><br>
-            {{ end }}
-            {{ range .ftasks }}
-                    <a id="deadtask">{{.Title}}</a><br>
-            {{ end }}
+        <div hx-ext="sse" sse-connect="/sse?stream=tasks" sse-swap="tasks">
         </div>
     </body>
     <script src="https://unpkg.com/htmx.org@2.0.1" integrity="sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/" crossorigin="anonymous"></script>
-
+    <script src="https://unpkg.com/htmx-ext-sse@2.2.1/sse.js"></script>
 </html>
 {{end}}
